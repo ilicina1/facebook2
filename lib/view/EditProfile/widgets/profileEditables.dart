@@ -43,7 +43,10 @@ class _ProfileEditablesState extends State<ProfileEditables> {
                   'Upravljajte \n slikama',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.grey, letterSpacing: 1.5, fontSize: 14),
+                      decoration: TextDecoration.underline,
+                      color: Colors.grey,
+                      letterSpacing: 1.5,
+                      fontSize: 14),
                 )
               ],
             ),
@@ -62,7 +65,10 @@ class _ProfileEditablesState extends State<ProfileEditables> {
                   'Upravljajte \n videozapisima',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.grey, letterSpacing: 1.5, fontSize: 14),
+                      decoration: TextDecoration.underline,
+                      color: Colors.grey,
+                      letterSpacing: 1.5,
+                      fontSize: 14),
                 )
               ],
             )
