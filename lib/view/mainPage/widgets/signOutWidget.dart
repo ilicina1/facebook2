@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 Widget signOutWidget() {
   return FlatButton(
-      child: Text("Sign out"),
+      child: Text("Odjavi se"),
       onPressed: () {
         //signOut();
       },

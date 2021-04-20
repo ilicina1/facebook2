@@ -1,3 +1,4 @@
+import 'package:facebook_2/view/mainPage/widgets/dodajPostWidget.dart';
 import 'package:facebook_2/view/mainPage/widgets/signOutWidget.dart';
 import 'package:facebook_2/view/mainPage/widgets/titleWidget.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,14 @@ class _MainScreenState extends State<MainScreen> {
           signOutWidget(),
         ],
       ),
-      body: Padding(padding: EdgeInsets.all(10)),
+      body: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            dodajPostWidget(),
+          ],
+        ),
+      ),
     );
   }
 }
