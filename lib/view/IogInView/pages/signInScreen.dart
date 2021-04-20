@@ -1,5 +1,6 @@
 import 'package:facebook_2/services/signInFacebook.dart';
 import 'package:facebook_2/view/IogInView/widgets/facebookLogo.dart';
+import 'package:facebook_2/view/mainPage/pages/mainScreen.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -28,6 +29,12 @@ class _SignInScreenState extends State<SignInScreen> {
             TextButton(
               onPressed: () {
                 initiateFacebookLogin();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainScreen(),
+                  ),
+                );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
