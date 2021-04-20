@@ -1,3 +1,5 @@
+import 'package:facebook_2/utils/style/facebookLogoText.dart';
+import 'package:facebook_2/view/EditProfile/widgets/profileEditables.dart';
 import 'package:flutter/material.dart';
 
 class EditProfile extends StatefulWidget {
@@ -11,7 +13,13 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('FACEBOOK'),
+        title: Text(
+          'FACEBOOK',
+          style: facebookDecoration(),
+        ),
+      ),
+      body: SafeArea(
+        child: ProfileEditables(),
       ),
     );
   }
