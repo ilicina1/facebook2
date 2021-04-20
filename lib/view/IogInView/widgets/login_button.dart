@@ -1,5 +1,4 @@
 import 'package:facebook_2/utils/style/style.dart';
-import 'package:facebook_2/view/mainPage/pages/mainScreen.dart';
 import 'package:facebook_2/viewModel/login_view_model.dart';
 import 'package:flutter/material.dart';
 
