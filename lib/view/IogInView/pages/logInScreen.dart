@@ -1,14 +1,14 @@
-import 'package:facebook_2/services/signInFacebook.dart';
+import 'package:facebook_2/services/logInFacebook.dart';
 import 'package:facebook_2/view/IogInView/widgets/facebookLogo.dart';
 import 'package:facebook_2/view/mainPage/pages/mainScreen.dart';
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatefulWidget {
+class LogInScreen extends StatefulWidget {
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  _LogInScreenState createState() => _LogInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _LogInScreenState extends State<LogInScreen> {
   @override
   void initState() {
     super.initState();
