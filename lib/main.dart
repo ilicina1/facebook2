@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
         seconds: 3,
         navigateAfterSeconds: new SignInScreen(),
         title: new Text(
-          'Welcome In Facebook',
+          'Welcome To Facebook',
           style: new TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20.0,
