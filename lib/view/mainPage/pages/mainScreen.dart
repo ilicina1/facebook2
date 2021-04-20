@@ -1,6 +1,8 @@
 import 'package:facebook_2/view/mainPage/widgets/dodajPostWidget.dart';
+import 'package:facebook_2/view/mainPage/widgets/nizDugmadiZaPost.dart';
 import 'package:facebook_2/view/mainPage/widgets/signOutWidget.dart';
 import 'package:facebook_2/view/mainPage/widgets/titleWidget.dart';
+import 'package:facebook_2/view/mainPage/widgets/urediProfilWidget.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -16,13 +18,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.white,
         title: titleWidget(),
         actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.person),
-            label: Text('Uredi profil'),
-            onPressed: () {
-              //uredi profil
-            },
-          ),
+          urediProfilWidget(),
           signOutWidget(),
         ],
       ),
@@ -31,6 +27,7 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           children: [
             dodajPostWidget(),
+            nizDugmadiZaPost(),
           ],
         ),
       ),
