@@ -8,13 +8,7 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        login();
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MainScreen(),
-          ),
-        );
+        login(context);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

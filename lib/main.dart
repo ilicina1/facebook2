@@ -1,7 +1,11 @@
 import 'package:facebook_2/utils/style/style.dart';
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:splashscreen/splashscreen.dart';
+
+final FacebookLogin facebookLogIn = FacebookLogin();
 
 void main() {
   runApp(new MaterialApp(

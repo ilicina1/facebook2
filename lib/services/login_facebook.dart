@@ -1,9 +1,11 @@
+import 'package:facebook_2/main.dart';
+import 'package:facebook_2/view/mainPage/pages/mainScreen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
-void initiateFacebookLogin() async {
-  var facebookLogin = FacebookLogin();
+void initiateFacebookLogin(context) async {
   var facebookLoginResult =
-      await facebookLogin.logInWithReadPermissions(['email']);
+      await facebookLogIn.logInWithReadPermissions(['email']);
   switch (facebookLoginResult.status) {
     case FacebookLoginStatus.error:
       print("Error");
@@ -15,8 +17,17 @@ void initiateFacebookLogin() async {
       break;
     case FacebookLoginStatus.loggedIn:
       print("LoggedIn");
-      // onLoginStatusChanged(true);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MainScreen(),
+        ),
+      );
       break;
   }
-  print("${facebookLogin.isLoggedIn} ss");
+}
+
+void logoutFacebook() async {
+  await facebookLogIn.logOut();
+  print("User Sign Out");
 }
