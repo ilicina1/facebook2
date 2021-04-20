@@ -1,6 +1,6 @@
-import 'package:facebook_2/view/mainPage/widgets/dodajPostWidget.dart';
-import 'package:facebook_2/view/mainPage/widgets/signOutWidget.dart';
-import 'package:facebook_2/view/mainPage/widgets/titleWidget.dart';
+import 'package:facebook_2/view/mainPage/widgets/dodaj_post_widget.dart';
+import 'package:facebook_2/view/mainPage/widgets/sign_out_widget.dart';
+import 'package:facebook_2/view/mainPage/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {

@@ -1,5 +1,6 @@
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
-import 'package:facebook_2/view/mainPage/pages/mainScreen.dart';
+import 'package:facebook_2/view/mainPage/pages/main_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
@@ -30,8 +31,12 @@ void initiateFacebookLogin(context) async {
   }
 }
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
 Future<Null> logOut(context) async {
   await facebookLogIn.logOut();
+  await _auth.signOut();
+
   print('Logged out.');
   Navigator.pushReplacement(
     context,
