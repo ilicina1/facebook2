@@ -13,6 +13,7 @@ void initiateFacebookLogin(context) async {
       await facebookLogIn.logInWithReadPermissions(['public_profile', 'email']);
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  print("${facebookLoginResult.accessToken.token} tokentokentoken");
   switch (facebookLoginResult.status) {
     case FacebookLoginStatus.error:
       print("Error");
@@ -26,9 +27,6 @@ void initiateFacebookLogin(context) async {
       final FacebookAccessToken accessToken = facebookLoginResult.accessToken;
 
       final token = facebookLoginResult.accessToken.token;
-
-      print(
-          'Facebook token userID : ${facebookLoginResult.accessToken.permissions}');
 
       if (accessToken != null) {
         accessToken.permissions.forEach((element) {
