@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:facebook_2/view/mainPage/pages/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 final FacebookLogin facebookLogIn = FacebookLogin();
 FacebookAccessToken accessToken;
+
 void initiateFacebookLogin(context) async {
   var facebookLoginResult =
       await facebookLogIn.logInWithReadPermissions(['public_profile', 'email']);
