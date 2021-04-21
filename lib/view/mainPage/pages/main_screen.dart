@@ -1,5 +1,6 @@
+import 'package:facebook_2/services/login_screen_services/login_facebook.dart';
 import 'package:facebook_2/view/EditProfile/pages/edit_profile.dart';
-import 'package:facebook_2/view/mainPage/widgets/dodaj_post_widget.dart';
+import 'package:facebook_2/view/mainPage/widgets/text_field_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/show_image.dart';
 import 'package:facebook_2/view/mainPage/widgets/sign_out_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/title_widget.dart';
@@ -20,17 +21,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-
-    // sets first value
-    _now = DateTime.now().second.toString();
-
-    // defines a timer
-    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
-      setState(() {
-        _now = DateTime.now().second.toString();
-        //print(AddingImages().image.toString());
-      });
-    });
   }
 
   @override
@@ -45,6 +35,7 @@ class _MainScreenState extends State<MainScreen> {
             label: Text('Uredi profil'),
             onPressed: () {
               //uredi profil
+              googleSignout(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -53,14 +44,14 @@ class _MainScreenState extends State<MainScreen> {
               );
             },
           ),
-          signOutWidget(),
+          signOutWidget(context),
         ],
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-            dodajPostWidget(),
+            textFieldWidget(),
             arrayOfButtonsStat(context),
             ShowImage(),
           ],

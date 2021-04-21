@@ -2,52 +2,54 @@ import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:facebook_2/view/mainPage/pages/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
-final FacebookLogin facebookLogIn = FacebookLogin();
-FacebookAccessToken accessToken;
+FirebaseAuth _auth = FirebaseAuth.instance;
+User user;
+FacebookLogin facebookLogin = FacebookLogin();
+bool isSignIn = false;
 
-void initiateFacebookLogin(context) async {
-  var facebookLoginResult =
-      await facebookLogIn.logInWithReadPermissions(['public_profile', 'email']);
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  accessToken = facebookLoginResult.accessToken;
-  // print("${facebookLoginResult.accessToken.token} tokentokentoken");
-  switch (facebookLoginResult.status) {
-    case FacebookLoginStatus.error:
-      print("Error");
-      break;
+Future<void> handleLogin(context) async {
+  final FacebookLoginResult result =
+      await facebookLogin.logInWithReadPermissions(['email']);
+  switch (result.status) {
     case FacebookLoginStatus.cancelledByUser:
-      print("CancelledByUser");
+      break;
+    case FacebookLoginStatus.error:
       break;
     case FacebookLoginStatus.loggedIn:
-      print("LoggedIn");
-
-      final FacebookAccessToken accessToken = facebookLoginResult.accessToken;
-
-      final token = facebookLoginResult.accessToken.token;
-
-      if (accessToken != null) {
-        accessToken.permissions.forEach((element) {
-          print(element);
-        });
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MainScreen(),
-          ),
-        );
+      try {
+        await loginWithfacebook(result, context);
+      } catch (e) {
+        print(e);
       }
       break;
   }
 }
 
-Future<Null> logOut(context) async {
-  await facebookLogIn.logOut();
-  await FacebookAuth.instance.logOut();
+Future loginWithfacebook(FacebookLoginResult result, context) async {
+  final FacebookAccessToken accessToken = result.accessToken;
+  AuthCredential credential =
+      FacebookAuthProvider.credential(accessToken.token);
+  var a = null;
+  a = await _auth.signInWithCredential(credential);
+  isSignIn = true;
+  user = a.user;
+  if (user != null) {}
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => MainScreen(),
+    ),
+  );
+}
 
-  print('Logged out.');
+Future<void> googleSignout(context) async {
+  await _auth.signOut().then((onValue) {
+    facebookLogin.logOut();
+    isSignIn = false;
+  });
+
   Navigator.pushReplacement(
     context,
     MaterialPageRoute(
