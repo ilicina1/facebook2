@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:facebook_2/view/mainPage/pages/main_screen.dart';
+import 'package:facebook_2/view/mainPage/widgets/upload_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -25,20 +25,11 @@ void initiateFacebookLogin(context) async {
       print("LoggedIn");
 
       final FacebookAccessToken accessToken = facebookLoginResult.accessToken;
-      // final result = await FacebookAuth.instance
-      //     .login(permissions: ['email', 'user_birthday']);
-      // print(result.toJson());
-      //
+
       final token = facebookLoginResult.accessToken.token;
 
       print(
           'Facebook token userID : ${facebookLoginResult.accessToken.permissions}');
-      // final graphResponse = await http.get(Uri.https(
-      //     'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${token}',
-      //     '/assets'));
-
-      // final profile = jsonDecode(graphResponse.body);
-      // print(profile);
 
       if (accessToken != null) {
         accessToken.permissions.forEach((element) {
