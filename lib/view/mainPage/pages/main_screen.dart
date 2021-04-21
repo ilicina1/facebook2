@@ -1,3 +1,4 @@
+import 'package:facebook_2/view/editProfile/pages/edit_profile.dart';
 import 'package:facebook_2/view/mainPage/widgets/dodaj_post_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/sign_out_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/title_widget.dart';
@@ -21,6 +22,12 @@ class _MainScreenState extends State<MainScreen> {
             label: Text('Uredi profil'),
             onPressed: () {
               //uredi profil
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EditProfile(),
+                ),
+              );
             },
           ),
           signOutWidget(),
