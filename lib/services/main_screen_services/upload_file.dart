@@ -2,7 +2,6 @@ import 'package:facebook_2/services/login_screen_services/login_facebook.dart';
 import 'package:facebook_2/services/main_screen_services/add_post.dart';
 import 'package:facebook_2/utils/dummyData/dummyData.dart';
 import 'package:facebook_2/view/mainPage/widgets/text_field_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 Future uploadPost() async {
@@ -18,7 +17,8 @@ Future uploadPost() async {
   try {
     if (image != null) {
       await firebase_storage.FirebaseStorage.instance
-          .ref('posts/${user.email}/${imageName[imageName.length - 1]}')
+          // .ref('posts/${user.email}/${imageName[imageName.length - 1]}')
+          .ref('posts/${imageName[imageName.length - 1]}')
           .putFile(image);
     }
   } catch (e) {
@@ -33,9 +33,10 @@ Future uploadPost() async {
   }
 
   // firebase_storage.ListResult result =
-  //     await firebase_storage.FirebaseStorage.instance.ref('posts').listAll();
+  //     await firebase_storage.FirebaseStorage.instance.ref('posts/').listAll();
 
-  // result.items.forEach((firebase_storage.Reference ref) {
-  //   print('Found file: $ref ');
+  // result.items.forEach((firebase_storage.Reference ref) async {
+  //   String result = await ref.getDownloadURL();
+  //   print('Found file: ${result} ++ ');
   // });
 }
