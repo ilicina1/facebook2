@@ -11,25 +11,31 @@ Future uploadPost() async {
       firebase_storage.FirebaseStorage.instance;
 
   // splitamo image path da bi dobili njegov naziv
-  List<String> imageName = image.path.split('/');
+  List<String> imageName = [];
+  if (image != null) imageName = image.path.split('/');
 
   // za svakog usera koji postavi nesto spasavamo sliku u posts/njegovUserId/nazivSlike
-  print(image);
   try {
-    await firebase_storage.FirebaseStorage.instance
-        .ref('posts/${user.email}/${imageName[imageName.length - 1]}')
-        .putFile(image);
+    if (image != null) {
+      await firebase_storage.FirebaseStorage.instance
+          .ref('posts/${user.email}/${imageName[imageName.length - 1]}')
+          .putFile(image);
+    }
   } catch (e) {
     print("Fail firebase storage");
   }
 
-  addPost(user.displayName, imageName[imageName.length - 1], myController.text,
-      user.email);
+  if (image != null) {
+    addPost(user.displayName, imageName[imageName.length - 1],
+        myController.text, user.email);
+  } else {
+    addPost(user.displayName, "", myController.text, user.email);
+  }
 
-  firebase_storage.ListResult result =
-      await firebase_storage.FirebaseStorage.instance.ref('posts').listAll();
+  // firebase_storage.ListResult result =
+  //     await firebase_storage.FirebaseStorage.instance.ref('posts').listAll();
 
-  result.items.forEach((firebase_storage.Reference ref) {
-    print('Found file: $ref ');
-  });
+  // result.items.forEach((firebase_storage.Reference ref) {
+  //   print('Found file: $ref ');
+  // });
 }
