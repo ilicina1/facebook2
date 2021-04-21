@@ -1,5 +1,5 @@
-import 'package:facebook_2/view/EditProfile/widgets/imageWidget.dart';
-import 'package:facebook_2/view/EditProfile/widgets/textFields.dart';
+import 'package:facebook_2/view/EditProfile/widgets/image_widget.dart';
+import 'package:facebook_2/view/EditProfile/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 
 class ProfileEditables extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:facebook_2/utils/style/style.dart';
-import 'package:facebook_2/view/mainPage/pages/mainScreen.dart';
 import 'package:facebook_2/viewModel/login_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -8,13 +7,7 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        login();
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MainScreen(),
-          ),
-        );
+        login(context);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +15,7 @@ class LoginButton extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "SignIn",
+              "Log In",
               style: loginButton,
             ),
           ),

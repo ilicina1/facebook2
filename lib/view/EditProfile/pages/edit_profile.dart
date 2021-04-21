@@ -1,5 +1,5 @@
 import 'package:facebook_2/utils/style/facebookLogoText.dart';
-import 'package:facebook_2/view/EditProfile/widgets/profileEditables.dart';
+import 'package:facebook_2/view/EditProfile/widgets/profile_editables.dart';
 import 'package:flutter/material.dart';
 
 class EditProfile extends StatefulWidget {

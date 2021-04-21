@@ -1,10 +1,14 @@
 import 'package:facebook_2/utils/style/style.dart';
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: new MyApp(),
   ));
 }
