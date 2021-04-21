@@ -1,7 +1,10 @@
-import 'package:facebook_2/view/editProfile/pages/edit_profile.dart';
+import 'package:facebook_2/view/EditProfile/pages/edit_profile.dart';
 import 'package:facebook_2/view/mainPage/widgets/dodaj_post_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/sign_out_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/title_widget.dart';
+import 'dart:async';
+import 'package:facebook_2/view/mainPage/widgets/nizDugmadiZaPost.dart';
+import 'package:facebook_2/view/mainPage/widgets/ucitaneSlikeVidei.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -10,6 +13,25 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  String _now;
+  Timer _everySecond;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // sets first value
+    _now = DateTime.now().second.toString();
+
+    // defines a timer
+    _everySecond = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        _now = DateTime.now().second.toString();
+        //print(AddingImages().image.toString());
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +60,8 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           children: [
             dodajPostWidget(),
+            nizDugmadiZaPost(context),
+            ucitaneSlikeVidei(),
           ],
         ),
       ),
