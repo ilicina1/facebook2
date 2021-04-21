@@ -1,21 +1,23 @@
+import 'package:facebook_2/services/mainScreen/dodajSliku.dart';
 import 'package:facebook_2/utils/style/postButtonStyle.dart';
+import 'package:facebook_2/view/mainPage/pages/mainScreen.dart';
 import 'package:flutter/material.dart';
 
-Widget nizDugmadiZaPost() {
+Widget nizDugmadiZaPost(BuildContext context) {
   return Row(
     children: <Widget>[
       FlatButton.icon(
-        icon: Icon(Icons.image),
-        label: Text('Dodaj sliku'),
+        icon: Icon(Icons.camera),
+        label: Text('Kamera'),
         onPressed: () {
-          //uredi profil
+          //
         },
       ),
       FlatButton.icon(
-        icon: Icon(Icons.video_label),
-        label: Text('Dodaj video'),
+        icon: Icon(Icons.image),
+        label: Text('Slika ili video'),
         onPressed: () {
-          //uredi profil
+          AddingImages().imgFromGallery();
         },
       ),
       ElevatedButton(
