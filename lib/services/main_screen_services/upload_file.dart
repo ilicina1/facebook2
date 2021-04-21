@@ -30,6 +30,6 @@ Future uploadPost() async {
       await firebase_storage.FirebaseStorage.instance.ref('posts').listAll();
 
   result.items.forEach((firebase_storage.Reference ref) {
-    print('Found file: $ref');
+    print('Found file: $ref ');
   });
 }
