@@ -1,8 +1,12 @@
-import 'package:facebook_2/view/EditProfile/widgets/image_widget.dart';
-import 'package:facebook_2/view/EditProfile/widgets/text_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:facebook_2/view/editProfile/widgets/image_widget.dart';
+import 'package:facebook_2/view/editProfile/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 
 class ProfileEditables extends StatefulWidget {
+  final doc;
+  ProfileEditables(BuildContext context, DocumentSnapshot this.doc);
+
   @override
   _ProfileEditablesState createState() => _ProfileEditablesState();
 }
@@ -14,7 +18,7 @@ class _ProfileEditablesState extends State<ProfileEditables> {
       //mainAxisAlignment: MainAxisAlignment.center,
       //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        imageWidget(context),
+        imageWidget(context, widget.doc),
         SizedBox(
           height: 10,
         ),

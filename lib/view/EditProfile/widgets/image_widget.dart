@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-Widget imageWidget(BuildContext context) {
+Widget imageWidget(BuildContext context, DocumentSnapshot doc) {
+  String image = doc['image'].toString();
   return Row(
     //crossAxisAlignment: CrossAxisAlignment.baseline,
     mainAxisAlignment: MainAxisAlignment.center,
@@ -8,8 +10,7 @@ Widget imageWidget(BuildContext context) {
       Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: CircleAvatar(
-          backgroundImage: NetworkImage(
-              'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1'),
+          backgroundImage: AssetImage('assets/images/$image'),
           radius: 80.0,
           backgroundColor: Colors.white,
         ),
