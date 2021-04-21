@@ -1,9 +1,11 @@
 import 'package:facebook_2/services/login_facebook.dart';
 
+import '../services/login_facebook.dart';
+
 void login(context) {
-  initiateFacebookLogin(context);
+  LoginFacebookService().initiateFacebookLogin(context);
 }
 
 void logout(context) {
-  logOut(context);
+  LoginFacebookService().logOut(context);
 }

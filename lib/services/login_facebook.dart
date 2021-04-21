@@ -5,9 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
-final FacebookLogin facebookLogIn = FacebookLogin();
-
 class LoginFacebookService implements LoginFacebookInterface {
+  final FacebookLogin facebookLogIn = FacebookLogin();
+
+  @override
   void initiateFacebookLogin(context) async {
     var facebookLoginResult =
         await facebookLogIn.logInWithReadPermissions(['email']);
@@ -35,6 +36,7 @@ class LoginFacebookService implements LoginFacebookInterface {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  @override
   Future<Null> logOut(context) async {
     await facebookLogIn.logOut();
     await _auth.signOut();
