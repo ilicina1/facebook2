@@ -12,20 +12,22 @@ Future uploadFile() async {
   firebase_storage.FirebaseStorage storage =
       firebase_storage.FirebaseStorage.instance;
 
+  List<String> imageName = image.path.split('/');
+
   try {
     await firebase_storage.FirebaseStorage.instance
-        .ref('posts/file-to-upload.png')
+        .ref('${accessToken.userId}/${imageName[imageName.length - 1]}')
         .putFile(image);
   } catch (e) {
     print("failll");
   }
 
-  // firebase_storage.ListResult result =
-  //     await firebase_storage.FirebaseStorage.instance.ref().listAll();
+  firebase_storage.ListResult result =
+      await firebase_storage.FirebaseStorage.instance.ref('posts').listAll();
 
-  // result.items.forEach((firebase_storage.Reference ref) {
-  //   print('Found file: $ref');
-  // });
+  result.items.forEach((firebase_storage.Reference ref) {
+    print('Found file: $ref');
+  });
 }
 
 Widget arrayOfButtonsStat(BuildContext context) {

@@ -7,13 +7,13 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 final FacebookLogin facebookLogIn = FacebookLogin();
-
+FacebookAccessToken accessToken;
 void initiateFacebookLogin(context) async {
   var facebookLoginResult =
       await facebookLogIn.logInWithReadPermissions(['public_profile', 'email']);
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  print("${facebookLoginResult.accessToken.token} tokentokentoken");
+  accessToken = facebookLoginResult.accessToken;
+  // print("${facebookLoginResult.accessToken.token} tokentokentoken");
   switch (facebookLoginResult.status) {
     case FacebookLoginStatus.error:
       print("Error");
