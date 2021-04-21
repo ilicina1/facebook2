@@ -1,12 +1,12 @@
 import 'package:facebook_2/services/login_screen_services/login_facebook.dart';
 import 'package:facebook_2/view/EditProfile/pages/edit_profile.dart';
+import 'package:facebook_2/view/mainPage/widgets/list_view_posts.dart';
+import 'package:facebook_2/view/mainPage/widgets/route_edit_profile.dart';
 import 'package:facebook_2/view/mainPage/widgets/text_field_widget.dart';
-import 'package:facebook_2/view/mainPage/widgets/show_image.dart';
 import 'package:facebook_2/view/mainPage/widgets/sign_out_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/title_widget.dart';
 import 'dart:async';
 import 'package:facebook_2/view/mainPage/widgets/array_of_buttons.dart';
-import 'package:facebook_2/view/mainPage/widgets/upload_image.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -33,16 +33,7 @@ class _MainScreenState extends State<MainScreen> {
           FlatButton.icon(
             icon: Icon(Icons.person),
             label: Text('Uredi profil'),
-            onPressed: () {
-              //uredi profil
-              googleSignout(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EditProfile(),
-                ),
-              );
-            },
+            onPressed: () => editProfile(context),
           ),
           signOutWidget(context),
         ],
@@ -53,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             textFieldWidget(),
             arrayOfButtonsStat(context),
-            ShowImage(),
+            ListViewPosts(),
           ],
         ),
       ),
