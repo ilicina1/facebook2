@@ -30,6 +30,7 @@ class _UploadImageState extends State<UploadImage> {
     setState(() {
       if (pickedFile != null) {
         image = File(pickedFile.path);
+        print(image.path);
         print("image selected");
       } else {
         print('No image selected.');

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:facebook_2/view/mainPage/pages/main_screen.dart';
-import 'package:facebook_2/view/mainPage/widgets/upload_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';

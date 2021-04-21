@@ -1,6 +1,6 @@
 import 'package:facebook_2/view/EditProfile/pages/edit_profile.dart';
 import 'package:facebook_2/view/mainPage/widgets/dodaj_post_widget.dart';
-import 'package:facebook_2/view/mainPage/widgets/showImage.dart';
+import 'package:facebook_2/view/mainPage/widgets/show_image.dart';
 import 'package:facebook_2/view/mainPage/widgets/sign_out_widget.dart';
 import 'package:facebook_2/view/mainPage/widgets/title_widget.dart';
 import 'dart:async';
