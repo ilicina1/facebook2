@@ -41,7 +41,7 @@ Future loginWithfacebook(FacebookLoginResult result, context) async {
   if (user != null) {}
 
   final snapShot =
-      await FirebaseFirestore.instance.collection('posts').doc(user.uid).get();
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
 
   if (snapShot.exists) {
     // Document already exists, ne raditi nista
