@@ -11,5 +11,7 @@ String imgUrlDownload = "";
 
 String imageProfileComments = "";
 
+var konacniURL;
+
 // int indexPom = 0;
 // String indexDokumenta = "0";
