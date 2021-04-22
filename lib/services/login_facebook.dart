@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import 'package:facebook_2/interface/login_facebook_interface.dart';
-=======
 import 'dart:convert';
 import 'package:http/http.dart' as http;
->>>>>>> main
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:facebook_2/view/mainPage/pages/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,27 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
-class LoginFacebookService implements LoginFacebookInterface {
-  final FacebookLogin facebookLogIn = FacebookLogin();
+final FacebookLogin facebookLogIn = FacebookLogin();
 
-<<<<<<< HEAD
-  @override
-  void initiateFacebookLogin(context) async {
-    var facebookLoginResult =
-        await facebookLogIn.logInWithReadPermissions(['email']);
-    switch (facebookLoginResult.status) {
-      case FacebookLoginStatus.error:
-        print("Error");
-        // onLoginStatusChanged(false);
-        break;
-      case FacebookLoginStatus.cancelledByUser:
-        print("CancelledByUser");
-        // onLoginStatusChanged(false);
-        break;
-      case FacebookLoginStatus.loggedIn:
-        print("LoggedIn");
-
-=======
 void initiateFacebookLogin(context) async {
   facebookLogIn.loginBehavior = FacebookLoginBehavior.webViewOnly;
 
@@ -69,41 +46,26 @@ void initiateFacebookLogin(context) async {
         accessToken.permissions.forEach((element) {
           print(element);
         });
->>>>>>> main
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => MainScreen(),
           ),
         );
-<<<<<<< HEAD
-        break;
-    }
-=======
       }
       break;
->>>>>>> main
   }
+}
 
-<<<<<<< HEAD
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  @override
-  Future<Null> logOut(context) async {
-    await facebookLogIn.logOut();
-    await _auth.signOut();
-=======
 Future<Null> logOut(context) async {
   await facebookLogIn.logOut();
   await FacebookAuth.instance.logOut();
->>>>>>> main
 
-    print('Logged out.');
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LogInScreen(),
-      ),
-    );
-  }
+  print('Logged out.');
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => LogInScreen(),
+    ),
+  );
 }
