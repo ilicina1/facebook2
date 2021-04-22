@@ -1,10 +1,12 @@
 import 'dart:io';
-
+import 'package:path/path.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class ImageWidget2 extends StatefulWidget {
   ImageWidget2(BuildContext context);
@@ -15,6 +17,7 @@ class ImageWidget2 extends StatefulWidget {
 
 class _ImageWidget2State extends State<ImageWidget2> {
   User userTrenutni = FirebaseAuth.instance.currentUser;
+  var imageToSend;
 
   final picker = ImagePicker();
   var image;
@@ -42,11 +45,29 @@ class _ImageWidget2State extends State<ImageWidget2> {
         print(image.path);
         print("image selected");
         postoji = true;
+        //ovdje ubaciti sliku u storage odmah
+        //
       } else {
         image =
             'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1';
       }
     });
+  }
+
+  Future uploadImg() async {
+    if (image == null) return;
+
+    final fileName = basename(image.path);
+    final destination = 'files/$fileName';
+
+    final ref = FirebaseStorage.instance.ref(destination);
+
+    ref.putFile(image);
+
+    imageToSend = await firebase_storage.FirebaseStorage.instance
+        // .ref('posts/${user.email}/${imageName[imageName.length - 1]}')
+        .ref('files/${fileName[fileName.length - 1]}')
+        .getDownloadURL();
   }
 
   @override
@@ -60,6 +81,7 @@ class _ImageWidget2State extends State<ImageWidget2> {
           child: GestureDetector(
             onTap: () async {
               getImageGallery();
+              uploadImg();
 
               User userTrenutni = FirebaseAuth.instance.currentUser;
 
@@ -68,13 +90,12 @@ class _ImageWidget2State extends State<ImageWidget2> {
               final CollectionReference colRef = _db.collection("users");
 
               colRef.doc(userTrenutni.uid).set({
-                'profile_picture':
-                    'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1',
-              });
+                'profile_picture': '$imageToSend',
+              }, SetOptions(merge: true));
             },
             child: CircleAvatar(
               backgroundImage: postoji
-                  ? FileImage(image)
+                  ? NetworkImage('$imageToSend')
                   : NetworkImage(
                       'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1'),
               radius: 80.0,
