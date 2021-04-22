@@ -1,6 +1,7 @@
 import 'package:facebook_2/utils/style/style.dart';
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:facebook_2/view/gallery/pages/gallery.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -8,6 +9,7 @@ import 'package:splashscreen/splashscreen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FirebaseAuth.instance.signInAnonymously();
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Gallery(),
