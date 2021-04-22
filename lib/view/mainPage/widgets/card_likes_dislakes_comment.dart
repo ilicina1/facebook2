@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/view/mainPage/widgets/comment_button.dart';
 import 'package:facebook_2/view/mainPage/widgets/like_dislike_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 Widget cardLikesDislakesComment(
@@ -12,7 +11,7 @@ Widget cardLikesDislakesComment(
     children: [
       likeDislikeButton(true, document, collection, index),
       likeDislikeButton(false, document, collection, index),
-      commentButton(context),
+      commentButton(context, document),
     ],
   );
 }

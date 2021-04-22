@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
 import 'package:facebook_2/view/mainPage/pages/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,6 +11,7 @@ FacebookLogin facebookLogin = FacebookLogin();
 bool isSignIn = false;
 
 Future<void> handleLogin(context) async {
+  // facebookLogin.loginBehavior = FacebookLoginBehavior.webViewOnly;
   final FacebookLoginResult result =
       await facebookLogin.logInWithReadPermissions(['email']);
   switch (result.status) {
@@ -35,7 +37,36 @@ Future loginWithfacebook(FacebookLoginResult result, context) async {
   a = await _auth.signInWithCredential(credential);
   isSignIn = true;
   user = a.user;
+
   if (user != null) {}
+
+  final snapShot = await FirebaseFirestore.instance
+      .collection('users')
+      .doc(user.email)
+      .get();
+
+  if (snapShot.exists) {
+    // Document already exists, ne raditi nista
+  } else {
+    FirebaseFirestore.instance.collection("users").doc(user.email).set({
+      "name": user.displayName,
+      "profile_picture":
+          'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1',
+      "email": user.email,
+      "email_verified": user.emailVerified,
+    }).then((value) {
+      print(user.uid);
+    });
+  }
+
+  /* _db.collection('users').where("email", isEqualTo: user.email).doc{
+    'uid': user.uid,
+    'email': user.email,
+    'photoURL': 'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1',
+    'displayName': user.displayName,
+    'lastSeen': DateTime.now()
+  }, merge: true); */
+
   Navigator.pushReplacement(
     context,
     MaterialPageRoute(

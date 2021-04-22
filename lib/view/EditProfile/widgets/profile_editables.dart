@@ -14,7 +14,7 @@ class _ProfileEditablesState extends State<ProfileEditables> {
       //mainAxisAlignment: MainAxisAlignment.center,
       //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        imageWidget(context),
+        ImageWidget2(context),
         SizedBox(
           height: 10,
         ),
