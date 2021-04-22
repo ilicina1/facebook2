@@ -32,11 +32,11 @@ Future uploadPost() async {
     addPost(user.displayName, "", myController.text, user.email);
   }
 
-  // firebase_storage.ListResult result =
-  //     await firebase_storage.FirebaseStorage.instance.ref('posts/').listAll();
+  firebase_storage.ListResult result =
+      await firebase_storage.FirebaseStorage.instance.ref('posts/').listAll();
 
-  // result.items.forEach((firebase_storage.Reference ref) async {
-  //   String result = await ref.getDownloadURL();
-  //   print('Found file: ${result} ++ ');
-  // });
+  result.items.forEach((firebase_storage.Reference ref) async {
+    String result = await ref.getDownloadURL();
+    if (image == result) print('Found file: ${result} ++ ');
+  });
 }
