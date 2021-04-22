@@ -93,7 +93,10 @@ class _ImageWidget2State extends State<ImageWidget2> {
 
     print(imageToSend);
   }*/
-//radi kad se 3x ucita, firebase se odmah loaduje. problem znaci u ucitavanju widgeta
+//radi kad se 2x ucita, firebase se odmah loaduje. problem znaci u ucitavanju widgeta
+//i kad se tek startuje aplikacija, firebase je tacan od prethodnog logina, ne promijeni pocetnu profilnu sliku
+//dakle samo je u widgetu problem tj u njegovom refreshu ili buildu koji kasni malo pa treba 2x ponoviti postupak
+//izbora profilne slike
   @override
   Widget build(BuildContext context) {
     return Row(
