@@ -8,7 +8,11 @@ firebase_core_web=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.
 firebase_storage=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-8.0.4/
 firebase_storage_web=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-1.0.4/
 flutter_facebook_auth=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_auth-1.0.2+2/
+<<<<<<< HEAD
 flutter_facebook_login=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.1/
+=======
+flutter_facebook_login=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-1.2.0/
+>>>>>>> main
 flutter_plugin_android_lifecycle=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.1/
 image_picker=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.7.4/
 image_picker_for_web=/Users/fariscolakovic/developer/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_for_web-2.0.0/
