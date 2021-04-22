@@ -10,6 +10,8 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 final FacebookLogin facebookLogIn = FacebookLogin();
 
 void initiateFacebookLogin(context) async {
+  facebookLogIn.loginBehavior = FacebookLoginBehavior.webViewOnly;
+
   var facebookLoginResult =
       await facebookLogIn.logInWithReadPermissions(['public_profile', 'email']);
   final FirebaseAuth _auth = FirebaseAuth.instance;
