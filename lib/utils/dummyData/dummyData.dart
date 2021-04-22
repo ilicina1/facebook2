@@ -9,5 +9,7 @@ firebase_storage.ListResult result;
 
 String imgUrlDownload = "";
 
+String imageProfileComments = "";
+
 // int indexPom = 0;
 // String indexDokumenta = "0";

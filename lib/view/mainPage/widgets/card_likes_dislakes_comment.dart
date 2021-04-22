@@ -12,7 +12,7 @@ Widget cardLikesDislakesComment(
     children: [
       likeDislikeButton(true, document, collection, index),
       likeDislikeButton(false, document, collection, index),
-      commentButton(context),
+      commentButton(context, document),
     ],
   );
 }
