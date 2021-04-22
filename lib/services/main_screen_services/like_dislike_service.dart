@@ -3,19 +3,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 List<dynamic> getLikedArray(document) {
   List<dynamic> likedArray = document['liked'];
-  print("LIKED ARRAAAY:   $likedArray");
   return likedArray;
 }
 
 List<dynamic> getDislikedArray(document) {
   List<dynamic> dislikedArray = document['disliked'];
-  print("DISLIKED ARRAAAY:   $dislikedArray");
   return dislikedArray;
 }
 
 String getUserTrenutniEmail() {
   User userTrenutni = FirebaseAuth.instance.currentUser;
   //return userTrenutni.email;
+  //****************NAPOMENA************** */
+  //stavljeno je u return da vraca string neki bezveze
+  //zato jer je testirano bez da je korisnik prijavljen
+  //(u main-u direktno se ide na MainScreen - bez facebook logina)
+  //a inace treba koristiti --> return userTrenutni.email;
+  ////****************NAPOMENA************** */
   return "moj@stopostomail.com";
 }
 
