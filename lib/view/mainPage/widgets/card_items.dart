@@ -1,6 +1,23 @@
+import 'package:facebook_2/utils/dummyData/dummyData.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-Widget cardItems(context) {
+// Future<void> imageUrl(naziv) async {
+//   firebase_storage.ListResult result = await firebase_storage
+//       .FirebaseStorage.instance
+//       .ref('posts/$naziv')
+//       .listAll();
+
+//   result.items.forEach((firebase_storage.Reference ref) async {
+//     imgUrlDownload = await ref.getDownloadURL();
+//     print(await ref.getDownloadURL());
+//   });
+//   // print("${imgUrlDownload} sssssss");
+// }
+
+Widget cardItems(context, document) {
+  // imageUrl(document["image"]);
+  // print("${imgUrlDownload} sssssss");
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.center,

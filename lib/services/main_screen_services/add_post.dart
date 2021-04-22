@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -15,4 +16,8 @@ Future<void> addPost(name, image, postText, mail) {
       })
       .then((value) => print("Post added"))
       .catchError((error) => print("Failed to add post: $error"));
+}
+
+CollectionReference getCollectionReference() {
+  return FirebaseFirestore.instance.collection("posts");
 }
