@@ -11,7 +11,7 @@ FacebookLogin facebookLogin = FacebookLogin();
 bool isSignIn = false;
 
 Future<void> handleLogin(context) async {
-  facebookLogin.loginBehavior = FacebookLoginBehavior.webViewOnly;
+  // facebookLogin.loginBehavior = FacebookLoginBehavior.webViewOnly;
   final FacebookLoginResult result =
       await facebookLogin.logInWithReadPermissions(['email']);
   switch (result.status) {
