@@ -1,4 +1,5 @@
 import 'package:facebook_2/view/mainPage/widgets/card_items.dart';
+import 'package:facebook_2/view/mainPage/widgets/card_likes_dislakes_comment.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
@@ -19,12 +20,18 @@ class _ListViewPostsState extends State<ListViewPosts> {
           itemCount: 8,
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              height: MediaQuery.of(context).size.height * 0.13,
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: cardItems(context),
-                ),
+              //height: MediaQuery.of(context).size.height * 0.13,
+              child: Column(
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: cardItems(context),
+                    ),
+                  ),
+                  cardLikesDislakesComment(),
+                  SizedBox(height: 20)
+                ],
               ),
             );
           },
