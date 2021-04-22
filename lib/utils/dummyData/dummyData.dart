@@ -8,3 +8,6 @@ int storageLength = 0;
 firebase_storage.ListResult result;
 
 String imgUrlDownload = "";
+
+// int indexPom = 0;
+// String indexDokumenta = "0";

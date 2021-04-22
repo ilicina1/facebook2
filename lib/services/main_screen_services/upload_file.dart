@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/services/login_screen_services/login_facebook.dart';
 import 'package:facebook_2/services/main_screen_services/add_post.dart';
 import 'package:facebook_2/utils/dummyData/dummyData.dart';
@@ -18,11 +19,9 @@ Future uploadPost() async {
   try {
     if (image != null) {
       await firebase_storage.FirebaseStorage.instance
-          // .ref('posts/${user.email}/${imageName[imageName.length - 1]}')
           .ref('posts/${imageName[imageName.length - 1]}')
           .putFile(image);
       imageToSend = await firebase_storage.FirebaseStorage.instance
-          // .ref('posts/${user.email}/${imageName[imageName.length - 1]}')
           .ref('posts/${imageName[imageName.length - 1]}')
           .getDownloadURL();
     }
