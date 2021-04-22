@@ -1,7 +1,8 @@
 import 'package:facebook_2/utils/style/postButtonStyle.dart';
+import 'package:facebook_2/viewModel/comments_view_model.dart';
 import 'package:flutter/material.dart';
 
-Widget commentButton() {
+Widget commentButton(document) {
   return ElevatedButton(
     child: Text(
       'Komentariši',
@@ -10,7 +11,7 @@ Widget commentButton() {
     style: postButtonSyle(),
     onPressed: () {
       //uredi profil
-      //uploadPostModel();
+      addCommentModel(document);
     },
   );
 }

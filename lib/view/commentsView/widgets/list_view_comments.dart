@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/view/commentsView/widgets/card_comments.dart';
 import 'package:flutter/material.dart';
 
