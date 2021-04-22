@@ -15,6 +15,7 @@ class ImageWidget2 extends StatefulWidget {
 class _ImageWidget2State extends State<ImageWidget2> {
   final picker = ImagePicker();
   var image;
+  var postoji = false;
 
   Future getImageCam() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
@@ -37,8 +38,10 @@ class _ImageWidget2State extends State<ImageWidget2> {
         image = File(pickedFile.path);
         print(image.path);
         print("image selected");
+        postoji = true;
       } else {
-        print('No image selected.');
+        image =
+            'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1';
       }
     });
   }
@@ -56,7 +59,10 @@ class _ImageWidget2State extends State<ImageWidget2> {
               getImageGallery();
             },
             child: CircleAvatar(
-              backgroundImage: FileImage(image),
+              backgroundImage: postoji
+                  ? FileImage(image)
+                  : NetworkImage(
+                      'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1'),
               radius: 80.0,
               backgroundColor: Colors.white,
             ),
