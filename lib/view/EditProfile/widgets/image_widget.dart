@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,6 +14,8 @@ class ImageWidget2 extends StatefulWidget {
 }
 
 class _ImageWidget2State extends State<ImageWidget2> {
+  User userTrenutni = FirebaseAuth.instance.currentUser;
+
   final picker = ImagePicker();
   var image;
   var postoji = false;
@@ -57,6 +60,17 @@ class _ImageWidget2State extends State<ImageWidget2> {
           child: GestureDetector(
             onTap: () async {
               getImageGallery();
+
+              User userTrenutni = FirebaseAuth.instance.currentUser;
+
+              FirebaseFirestore _db = FirebaseFirestore.instance;
+
+              final CollectionReference colRef = _db.collection("users");
+
+              colRef.doc(userTrenutni.uid).set({
+                'profile_picture':
+                    'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1',
+              });
             },
             child: CircleAvatar(
               backgroundImage: postoji
