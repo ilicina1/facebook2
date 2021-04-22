@@ -1,10 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
-Future<void> addPost(name, imageToSend, postText, mail) {
+Future<void> addPost(
+  name,
+  imageToSend,
+  postText,
+  mail,
+) {
   CollectionReference posts = FirebaseFirestore.instance.collection('posts');
   return posts
       .add({
