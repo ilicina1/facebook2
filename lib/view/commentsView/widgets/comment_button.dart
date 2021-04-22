@@ -10,7 +10,6 @@ Widget commentButton(document) {
     ),
     style: postButtonSyle(),
     onPressed: () {
-      //uredi profil
       addCommentModel(document);
     },
   );

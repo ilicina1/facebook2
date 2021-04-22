@@ -9,6 +9,7 @@ class listViewComments extends StatefulWidget {
 }
 
 class _listViewCommentsState extends State<listViewComments> {
+  var duzina = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(

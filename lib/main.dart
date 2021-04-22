@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return new SplashScreen(
         seconds: 2,
-        navigateAfterSeconds: new MainScreen(),
+        navigateAfterSeconds: new LogInScreen(),
         title: new Text(
           'Welcome To Facebook',
           style: splashStyle,

@@ -3,9 +3,9 @@ import 'package:facebook_2/utils/dummyData/dummyData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-void pom() async {
-  User userTrenutni = FirebaseAuth.instance.currentUser;
+User userTrenutni = FirebaseAuth.instance.currentUser;
 
+void profilePicture() async {
   await FirebaseFirestore.instance
       .collection('users')
       .where('email', isEqualTo: userTrenutni.email)
@@ -27,7 +27,7 @@ class CardComments extends StatefulWidget {
 class _CardCommentsState extends State<CardComments> {
   @override
   Widget build(BuildContext context) {
-    pom();
+    profilePicture();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,7 +50,7 @@ class _CardCommentsState extends State<CardComments> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.document["userMail"],
+                userTrenutni.email,
                 style: TextStyle(
                   color: Colors.grey[400],
                 ),
