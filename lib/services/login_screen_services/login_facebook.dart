@@ -40,13 +40,15 @@ Future loginWithfacebook(FacebookLoginResult result, context) async {
 
   if (user != null) {}
 
-  final snapShot =
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+  final snapShot = await FirebaseFirestore.instance
+      .collection('users')
+      .doc(user.email)
+      .get();
 
   if (snapShot.exists) {
     // Document already exists, ne raditi nista
   } else {
-    FirebaseFirestore.instance.collection("users").doc(user.uid).set({
+    FirebaseFirestore.instance.collection("users").doc(user.email).set({
       "name": user.displayName,
       "profile_picture":
           'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1',

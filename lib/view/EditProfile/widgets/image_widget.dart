@@ -93,7 +93,7 @@ class _ImageWidget2State extends State<ImageWidget2> {
 
     print(imageToSend);
   }*/
-//radi kad se 2x ucita. treba uzimati sliku ne iz url2 nego iz snapshota da zauvijek ostane tu
+//radi kad se 3x ucita, firebase se odmah loaduje. problem znaci u ucitavanju widgeta
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -111,13 +111,13 @@ class _ImageWidget2State extends State<ImageWidget2> {
               FirebaseFirestore _db = FirebaseFirestore.instance;
 
               final CollectionReference colRef = _db.collection("users");
-              colRef.doc(userTrenutni.uid).set({
+              colRef.doc(userTrenutni.email).set({
                 'profile_picture': url2.toString(),
               }, SetOptions(merge: true));
 
               final snep = await FirebaseFirestore.instance
                   .collection('users')
-                  .doc(userTrenutni.uid)
+                  .doc(userTrenutni.email)
                   .get();
 
               konacniURL = snep['profile_picture'];
