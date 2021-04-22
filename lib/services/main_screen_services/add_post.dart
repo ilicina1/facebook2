@@ -12,6 +12,8 @@ Future<void> addPost(name, image, postText, mail) {
         'image': image,
         'postText': postText,
         'userMail': mail,
+        'likes': 0,
+        'dislikes': 0,
       })
       .then((value) => print("Post added"))
       .catchError((error) => print("Failed to add post: $error"));
