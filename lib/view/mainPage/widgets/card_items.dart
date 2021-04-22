@@ -14,7 +14,7 @@ class _CardItemsState extends State<CardItems> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
@@ -31,21 +31,16 @@ class _CardItemsState extends State<CardItems> {
         Container(
           width: MediaQuery.of(context).size.width * 0.45,
           height: 70.0,
-          child: Text(widget.document["postText"]),
-        ),
-        Container(
-          // width: MediaQuery.of(context).size.width * 0.45,
-          height: 70.0,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextButton(
-                onPressed: () => {},
-                child: Icon(
-                  Icons.thumb_up,
-                  color: Colors.blue[900],
+              Text(
+                widget.document["userMail"],
+                style: TextStyle(
+                  color: Colors.grey[400],
                 ),
               ),
-              Text("4 likes"),
+              Text(widget.document["postText"]),
             ],
           ),
         ),
@@ -53,46 +48,3 @@ class _CardItemsState extends State<CardItems> {
     );
   }
 }
-
-// Widget cardItems(context) {
-//   print("$imgUrlDownload ABA");
-//   return Row(
-//     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//     crossAxisAlignment: CrossAxisAlignment.center,
-//     children: [
-//       Container(
-//         width: 70.0,
-//         height: 70.0,
-//         decoration: new BoxDecoration(
-//           shape: BoxShape.circle,
-//           image: new DecorationImage(
-//             fit: BoxFit.fill,
-//             image: new NetworkImage(imgUrlDownload),
-//           ),
-//         ),
-//       ),
-//       Container(
-//         width: MediaQuery.of(context).size.width * 0.45,
-//         height: 70.0,
-//         child: Text(
-//             "Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor"),
-//       ),
-//       Container(
-//         // width: MediaQuery.of(context).size.width * 0.45,
-//         height: 70.0,
-//         child: Column(
-//           children: [
-//             TextButton(
-//               onPressed: () => {},
-//               child: Icon(
-//                 Icons.thumb_up,
-//                 color: Colors.blue[900],
-//               ),
-//             ),
-//             Text("4 likes"),
-//           ],
-//         ),
-//       ),
-//     ],
-//   );
-// }
