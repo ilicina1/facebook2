@@ -85,11 +85,6 @@ class _ImageWidget2State extends State<ImageWidget2> {
 
               FirebaseFirestore _db = FirebaseFirestore.instance;
 
-              final CollectionReference colRef = _db.collection("users");
-              colRef.doc(userTrenutni.email).set({
-                'profile_picture': imageToSend2,
-              }, SetOptions(merge: true));
-
               await FirebaseFirestore.instance
                   .collection('users')
                   .where('email', isEqualTo: userTrenutni.email)
@@ -99,7 +94,10 @@ class _ImageWidget2State extends State<ImageWidget2> {
                 konacniURL = doc.docs[0]['profile_picture'];
               });
 
-              print("$konacniURL AASSDD");
+              final CollectionReference colRef = _db.collection("users");
+              colRef.doc(userTrenutni.email).set({
+                'profile_picture': konacniURL,
+              }, SetOptions(merge: true));
               setState(() {});
             },
             child: CircleAvatar(
