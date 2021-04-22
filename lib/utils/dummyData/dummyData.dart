@@ -7,4 +7,4 @@ int storageLength = 0;
 
 firebase_storage.ListResult result;
 
-String imgUrlDownload = " sads";
+String imgUrlDownload = "";
