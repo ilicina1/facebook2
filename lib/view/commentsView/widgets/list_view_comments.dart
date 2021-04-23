@@ -30,8 +30,6 @@ class _ListViewCommentsState extends State<ListViewComments> {
                 itemCount:
                     snapshot.data.docs[widget.indexCheck]['comments'].length,
                 itemBuilder: (BuildContext context, int index) {
-                  print(
-                      "${snapshot.data.docs[widget.indexCheck]['comments'].length} AAAA");
                   return Container(
                     child: Column(
                       children: [

@@ -33,7 +33,8 @@ class _CardCommentsState extends State<CardComments> {
         future: profilePicture(),
         builder: (context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
-            return cardCommentsV2(context, widget.document, widget.index);
+            return CardCommentsV2(
+                widget.document, widget.index, imageProfileComments);
           } else {
             return CircularProgressIndicator();
           }
