@@ -17,7 +17,7 @@ class _CardCommentsV2State extends State<CardCommentsV2> {
   @override
   Widget build(BuildContext context) {
     setState(() {
-      widget.imgProfCom = konacniURL;
+      if (konacniURL != null) widget.imgProfCom = konacniURL;
     });
 
     return Row(
