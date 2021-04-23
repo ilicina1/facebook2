@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:facebook_2/utils/dummyData/dummyData.dart';
-import 'package:path/path.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,37 +23,21 @@ class _ImageWidget2State extends State<ImageWidget2> {
   var image;
   var postoji = false;
 
-  Future getImageCam() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
-
-    setState(() {
-      if (pickedFile != null) {
-        image = File(pickedFile.path);
-        print("image selected");
-      } else {
-        print('No image selected.');
-      }
-    });
-  }
-
   Future getImageGallery() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
-    setState(() {
-      if (pickedFile != null) {
-        image = File(pickedFile.path);
-        postoji = true;
-        uploadImage(image);
-      } else {
-        image =
-            'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1';
-      }
-    });
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+      postoji = true;
+      // uploadImage(image);
+    } else {
+      image =
+          'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1';
+    }
+    uploadImage(image);
   }
 
-  Future<String> uploadImage(var imageFile) async {
-    FirebaseStorage storage = FirebaseStorage.instance;
-
+  Future<void> uploadImage(var imageFile) async {
     await firebase_storage.FirebaseStorage.instance
         .ref('new/photo.jpg')
         .putFile(image);
@@ -63,13 +45,28 @@ class _ImageWidget2State extends State<ImageWidget2> {
         .ref('new/photo.jpg')
         .getDownloadURL();
 
-    return imageToSend2;
+    setState(() {
+      konacniURL = imageToSend2;
+    });
   }
 
-//radi kad se 2x ucita, firebase se odmah loaduje. problem znaci u ucitavanju widgeta
-//i kad se tek startuje aplikacija, firebase je tacan od prethodnog logina, ne promijeni pocetnu profilnu sliku
-//dakle samo je u widgetu problem tj u njegovom refreshu ili buildu koji kasni malo pa treba 2x ponoviti postupak
-//izbora profilne slike
+  Future<void> pom() async {
+    imageToSend2 = await firebase_storage.FirebaseStorage.instance
+        .ref('new/photo.jpg')
+        .getDownloadURL();
+
+    setState(() {
+      konacniURL = imageToSend2;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pom();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -33,8 +33,7 @@ Future loginWithfacebook(FacebookLoginResult result, context) async {
   final FacebookAccessToken accessToken = result.accessToken;
   AuthCredential credential =
       FacebookAuthProvider.credential(accessToken.token);
-  var a = null;
-  a = await _auth.signInWithCredential(credential);
+  var a = await _auth.signInWithCredential(credential);
   isSignIn = true;
   user = a.user;
 
