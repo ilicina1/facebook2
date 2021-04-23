@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/utils/dummyData/dummyData.dart';
+import 'package:facebook_2/view/commentsView/widgets/card_comments_v2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 User userTrenutni = FirebaseAuth.instance.currentUser;
 
-void profilePicture() async {
+Future<String> profilePicture() async {
   await FirebaseFirestore.instance
       .collection('users')
       .where('email', isEqualTo: userTrenutni.email)
@@ -14,6 +15,7 @@ void profilePicture() async {
       .then((doc) {
     imageProfileComments = doc.docs[0]['profile_picture'];
   });
+  return imageProfileComments;
 }
 
 class CardComments extends StatefulWidget {
@@ -27,39 +29,15 @@ class CardComments extends StatefulWidget {
 class _CardCommentsState extends State<CardComments> {
   @override
   Widget build(BuildContext context) {
-    profilePicture();
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          width: 70.0,
-          height: 70.0,
-          decoration: new BoxDecoration(
-            shape: BoxShape.circle,
-            image: new DecorationImage(
-              fit: BoxFit.fill,
-              image: new NetworkImage(imageProfileComments),
-            ),
-          ),
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width * 0.45,
-          height: 70.0,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                userTrenutni.email,
-                style: TextStyle(
-                  color: Colors.grey[400],
-                ),
-              ),
-              Text(widget.document["comments"][widget.index]),
-            ],
-          ),
-        ),
-      ],
-    );
+    return FutureBuilder<String>(
+        future: profilePicture(),
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          if (snapshot.hasData) {
+            return CardCommentsV2(
+                widget.document, widget.index, imageProfileComments);
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
   }
 }

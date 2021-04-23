@@ -1,4 +1,4 @@
-import 'package:facebook_2/utils/style/facebookLogoText.dart';
+import 'package:facebook_2/utils/style/style.dart';
 import 'package:facebook_2/view/EditProfile/widgets/profile_editables.dart';
 import 'package:flutter/material.dart';
 

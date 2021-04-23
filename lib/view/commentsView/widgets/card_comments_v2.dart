@@ -1,15 +1,25 @@
+import 'package:facebook_2/utils/dummyData/dummyData.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class CardItems extends StatefulWidget {
+User userTrenutni = FirebaseAuth.instance.currentUser;
+
+class CardCommentsV2 extends StatefulWidget {
   var document;
-  CardItems(this.document);
+  var index;
+  var imgProfCom;
+  CardCommentsV2(this.document, this.index, this.imgProfCom);
   @override
-  _CardItemsState createState() => _CardItemsState();
+  _CardCommentsV2State createState() => _CardCommentsV2State();
 }
 
-class _CardItemsState extends State<CardItems> {
+class _CardCommentsV2State extends State<CardCommentsV2> {
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      if (konacniURL != null) widget.imgProfCom = konacniURL;
+    });
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -21,7 +31,7 @@ class _CardItemsState extends State<CardItems> {
             shape: BoxShape.circle,
             image: new DecorationImage(
               fit: BoxFit.fill,
-              image: new NetworkImage(widget.document["image"]),
+              image: new NetworkImage(widget.imgProfCom),
             ),
           ),
         ),
@@ -32,12 +42,12 @@ class _CardItemsState extends State<CardItems> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.document["userMail"],
+                userTrenutni.email,
                 style: TextStyle(
                   color: Colors.grey[400],
                 ),
               ),
-              Text(widget.document["postText"]),
+              Text(widget.document["comments"][widget.index]),
             ],
           ),
         ),

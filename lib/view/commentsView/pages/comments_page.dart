@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 class CommentsPage extends StatefulWidget {
   var document;
-  CommentsPage(this.document);
+  var index;
+  CommentsPage(this.document, this.index);
   @override
   _CommentsPageState createState() => _CommentsPageState();
 }
@@ -26,7 +27,7 @@ class _CommentsPageState extends State<CommentsPage> {
           children: [
             textFieldComments(),
             commentButton(widget.document),
-            listViewComments(widget.document),
+            ListViewComments(widget.document, widget.index),
           ],
         ),
       ),
