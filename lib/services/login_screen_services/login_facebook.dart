@@ -58,14 +58,6 @@ Future loginWithfacebook(FacebookLoginResult result, context) async {
     });
   }
 
-  /* _db.collection('users').where("email", isEqualTo: user.email).doc{
-    'uid': user.uid,
-    'email': user.email,
-    'photoURL': 'https://i0.wp.com/www.ahpsfivedock.catholic.edu.au/wp-content/uploads/sites/18/2019/05/Person-icon.jpg?ssl=1',
-    'displayName': user.displayName,
-    'lastSeen': DateTime.now()
-  }, merge: true); */
-
   Navigator.pushReplacement(
     context,
     MaterialPageRoute(
