@@ -22,11 +22,13 @@ class _ListViewPostsState extends State<ListViewPosts> {
         child: StreamBuilder(
           stream: FirebaseFirestore.instance.collection("posts").snapshots(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
             return ListView.builder(
               itemCount: snapshot.data.docs.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  //height: MediaQuery.of(context).size.height * 0.13,
                   child: Column(
                     children: [
                       Card(
