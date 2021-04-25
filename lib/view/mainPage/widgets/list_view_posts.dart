@@ -11,6 +11,11 @@ class ListViewPosts extends StatefulWidget {
 
 class _ListViewPostsState extends State<ListViewPosts> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),

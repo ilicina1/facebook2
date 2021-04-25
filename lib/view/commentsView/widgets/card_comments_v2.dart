@@ -1,6 +1,8 @@
-import 'package:facebook_2/utils/dummyData/dummyData.dart';
+import 'package:facebook_2/providers/profile_image_notifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:facebook_2/providers/comment_notifier.dart';
+import 'package:provider/provider.dart';
 
 User userTrenutni = FirebaseAuth.instance.currentUser;
 
@@ -16,10 +18,9 @@ class CardCommentsV2 extends StatefulWidget {
 class _CardCommentsV2State extends State<CardCommentsV2> {
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      if (konacniURL != null) widget.imgProfCom = konacniURL;
-    });
-
+    var notif = context.watch<CommentNotifier>();
+    var notif2 = context.watch<ProfileImageNotifier>();
+    if (notif2.profileImage != null) widget.imgProfCom = notif2.profileImage;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +48,16 @@ class _CardCommentsV2State extends State<CardCommentsV2> {
                   color: Colors.grey[400],
                 ),
               ),
-              Text(widget.document["comments"][widget.index]),
+              FutureBuilder(
+                future: notif.getComment(widget.document, widget.index),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  } else {
+                    return Text(snapshot.data);
+                  }
+                },
+              ),
             ],
           ),
         ),

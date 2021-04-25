@@ -30,14 +30,15 @@ class _CardCommentsState extends State<CardComments> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
-        future: profilePicture(),
-        builder: (context, AsyncSnapshot<String> snapshot) {
-          if (snapshot.hasData) {
-            return CardCommentsV2(
-                widget.document, widget.index, imageProfileComments);
-          } else {
-            return CircularProgressIndicator();
-          }
-        });
+      future: profilePicture(),
+      builder: (context, AsyncSnapshot<String> snapshot) {
+        if (snapshot.hasData) {
+          return CardCommentsV2(
+              widget.document, widget.index, imageProfileComments);
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
+    );
   }
 }

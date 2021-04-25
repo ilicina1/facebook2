@@ -26,7 +26,7 @@ class _CommentsPageState extends State<CommentsPage> {
         child: Column(
           children: [
             textFieldComments(),
-            commentButton(widget.document),
+            CommentButton(widget.document),
             ListViewComments(widget.document, widget.index),
           ],
         ),

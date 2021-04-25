@@ -4,13 +4,13 @@ import 'package:facebook_2/view/mainPage/widgets/like_dislike_button.dart';
 import 'package:flutter/material.dart';
 
 Widget cardLikesDislakesComment(
-    document, BuildContext context, CollectionReference collection, int index) {
+    document, BuildContext context, collection, int index) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      likeDislikeButton(true, document, collection, index),
-      likeDislikeButton(false, document, collection, index),
+      LikeDislike(true, document, index),
+      LikeDislike(false, document, index),
       commentButton(context, document, index),
     ],
   );
