@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:facebook_2/providers/profile_image_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:provider/provider.dart';
 
 class ImageWidget2 extends StatefulWidget {

@@ -25,9 +25,15 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.white,
         title: titleWidget(),
         actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.person),
-            label: Text('Uredi profil'),
+          TextButton.icon(
+            icon: Icon(
+              Icons.person,
+              color: Colors.black,
+            ),
+            label: Text(
+              'Uredi profil',
+              style: TextStyle(color: Colors.black),
+            ),
             onPressed: () => editProfile(context),
           ),
           signOutWidget(context),
