@@ -6,6 +6,27 @@ class CommentNotifier extends ChangeNotifier {
   List<dynamic> _comments = [];
   List<dynamic> get comments => _comments;
 
+  // int velicina() {
+  //   return _comments.length;
+  // }
+
+  Future<String> getComment(document, index) async {
+    List<dynamic> listComments = [];
+
+    await FirebaseFirestore.instance
+        .collection('posts')
+        .get()
+        .then((querySnapshot) => {
+              querySnapshot.docs.forEach((doc) {
+                if (doc.id == document.id) {
+                  listComments = doc['comments'];
+                }
+              })
+            });
+
+    return listComments[index];
+  }
+
   Future<void> getComments(document) async {
     List<dynamic> listComments = [];
 
@@ -24,8 +45,11 @@ class CommentNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addComment(commentToAdd, document) {
-    FirebaseFirestore.instance.collection("posts").doc(document.id).update({
+  void addComment(commentToAdd, document) async {
+    await FirebaseFirestore.instance
+        .collection("posts")
+        .doc(document.id)
+        .update({
       "comments": FieldValue.arrayUnion([myControllerComments.text])
     });
 
