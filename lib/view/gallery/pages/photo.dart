@@ -5,8 +5,9 @@ class Photo extends StatelessWidget {
   Photo({Key key, this.image}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Image.network(image),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [Image.network(image), Text('bla')],
     );
   }
 }
