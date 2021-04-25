@@ -1,4 +1,5 @@
 import 'package:facebook_2/providers/comment_notifier.dart';
+import 'package:facebook_2/providers/likes_notifier.dart';
 import 'package:facebook_2/providers/post_image_notifier.dart';
 import 'package:facebook_2/providers/post_notifier.dart';
 import 'package:facebook_2/providers/profile_image_notifier.dart';
@@ -19,6 +20,7 @@ Future<void> main() async {
         ChangeNotifierProvider.value(value: ProfileImageNotifier()),
         ChangeNotifierProvider.value(value: PostImageNotifier()),
         ChangeNotifierProvider.value(value: PostNotifier()),
+        ChangeNotifierProvider.value(value: LikesNotifier()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
