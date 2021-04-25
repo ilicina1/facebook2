@@ -11,7 +11,6 @@ class _UploadImageState extends State<UploadImage> {
   @override
   Widget build(BuildContext context) {
     var notif = context.watch<PostImageNotifier>();
-
     return Row(
       children: [
         TextButton(

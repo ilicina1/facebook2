@@ -22,7 +22,6 @@ class _ListViewCommentsState extends State<ListViewComments> {
   @override
   Widget build(BuildContext context) {
     var notif = context.watch<CommentNotifier>();
-    print("${notif.comments.length} duzina komentara");
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
       child: Container(

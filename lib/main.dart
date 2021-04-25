@@ -1,5 +1,6 @@
 import 'package:facebook_2/providers/comment_notifier.dart';
 import 'package:facebook_2/providers/post_image_notifier.dart';
+import 'package:facebook_2/providers/post_notifier.dart';
 import 'package:facebook_2/providers/profile_image_notifier.dart';
 import 'package:facebook_2/utils/style/style.dart';
 import 'package:facebook_2/view/IogInView/pages/login_screen.dart';
@@ -17,6 +18,7 @@ Future<void> main() async {
         ChangeNotifierProvider.value(value: CommentNotifier()),
         ChangeNotifierProvider.value(value: ProfileImageNotifier()),
         ChangeNotifierProvider.value(value: PostImageNotifier()),
+        ChangeNotifierProvider.value(value: PostNotifier()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

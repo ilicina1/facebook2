@@ -44,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           children: [
             textFieldWidget(),
-            arrayOfButtonsStat(context),
+            ArrayOfButtonsStat(context),
             ListViewPosts(),
           ],
         ),
