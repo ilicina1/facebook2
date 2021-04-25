@@ -1,7 +1,5 @@
 import 'dart:io';
 import 'package:facebook_2/utils/dummyData/dummyData.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 

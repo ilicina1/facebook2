@@ -1,7 +1,6 @@
 import 'package:facebook_2/providers/post_notifier.dart';
 import 'package:facebook_2/utils/style/style.dart';
 import 'package:facebook_2/view/mainPage/widgets/upload_image.dart';
-import 'package:facebook_2/viewModel/main_screen_view_model/upload_post_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

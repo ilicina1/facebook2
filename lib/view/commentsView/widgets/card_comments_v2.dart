@@ -1,5 +1,4 @@
 import 'package:facebook_2/providers/profile_image_notifier.dart';
-import 'package:facebook_2/utils/dummyData/dummyData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_2/providers/comment_notifier.dart';

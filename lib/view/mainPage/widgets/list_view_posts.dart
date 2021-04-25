@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/providers/post_notifier.dart';
 import 'package:facebook_2/services/main_screen_services/add_post.dart';
 import 'package:facebook_2/view/mainPage/widgets/card_items.dart';
