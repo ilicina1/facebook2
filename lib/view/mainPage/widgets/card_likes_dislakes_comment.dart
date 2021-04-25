@@ -9,8 +9,8 @@ Widget cardLikesDislakesComment(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      likeDislikeButton(true, document, collection, index),
-      likeDislikeButton(false, document, collection, index),
+      LikeDislike(true, document, collection, index),
+      LikeDislike(false, document, collection, index),
       commentButton(context, document, index),
     ],
   );

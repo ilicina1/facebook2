@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/services/login_screen_services/login_facebook.dart';
+import 'package:facebook_2/services/main_screen_services/like_dislike_service.dart';
 import 'package:facebook_2/utils/dummyData/dummyData.dart';
 import 'package:facebook_2/view/mainPage/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,12 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class PostNotifier extends ChangeNotifier {
   List<dynamic> _posts = [];
+  List<dynamic> _liked = [];
+  List<dynamic> _disliked = [];
   List<dynamic> get posts => _posts;
+  List<dynamic> get liked => _liked;
+  List<dynamic> get disliked => _disliked;
+  var post = null;
 
   Future<void> getPosts() async {
     QuerySnapshot querySnapshot =
@@ -15,6 +21,11 @@ class PostNotifier extends ChangeNotifier {
 
     _posts = querySnapshot.docs;
 
+    notifyListeners();
+  }
+
+  Future<void> getPost(index) async {
+    post = _posts[index];
     notifyListeners();
   }
 
@@ -78,5 +89,59 @@ class PostNotifier extends ChangeNotifier {
     myController.clear();
 
     notifyListeners();
+  }
+
+  void likeOrDislikeButtonPressed(document, index, bool likeOrDislike) async {
+    List<dynamic> listLiked = [];
+    List<dynamic> listDisliked = [];
+
+    await FirebaseFirestore.instance
+        .collection('posts')
+        .get()
+        .then((querySnapshot) => {
+              querySnapshot.docs.forEach((doc) {
+                if (doc.id == document.id) {
+                  listLiked = doc['liked'];
+                  listDisliked = doc['disliked'];
+                }
+                _liked = listLiked;
+                _disliked = listDisliked;
+              })
+            });
+    _liked = listLiked;
+    _disliked = listDisliked;
+
+    String userTrenutniEmail = getUserTrenutniEmail();
+
+    if (likeOrDislike) {
+      if (_disliked.contains('$userTrenutniEmail')) {
+        _disliked.remove('$userTrenutniEmail');
+        _liked.add('$userTrenutniEmail');
+      } else if (_liked.contains('$userTrenutniEmail')) {
+        _liked.remove('$userTrenutniEmail');
+      } else {
+        _liked.add('$userTrenutniEmail');
+      }
+    } else {
+      if (_disliked.contains('$userTrenutniEmail')) {
+        _disliked.remove('$userTrenutniEmail');
+      } else if (_liked.contains('$userTrenutniEmail')) {
+        _liked.remove('$userTrenutniEmail');
+        _disliked.add('$userTrenutniEmail');
+      } else {
+        _disliked.add('$userTrenutniEmail');
+      }
+    }
+
+    FirebaseFirestore.instance.collection("posts").doc(document.id).update({
+      'liked': _liked,
+      'disliked': _disliked,
+    });
+
+    notifyListeners();
+  }
+
+  int pom() {
+    return _liked.length;
   }
 }
