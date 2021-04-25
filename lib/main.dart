@@ -20,7 +20,6 @@ Future<void> main() async {
         ChangeNotifierProvider.value(value: ProfileImageNotifier()),
         ChangeNotifierProvider.value(value: PostImageNotifier()),
         ChangeNotifierProvider.value(value: PostNotifier()),
-        ChangeNotifierProvider.value(value: LikesNotifier()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
