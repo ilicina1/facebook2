@@ -1,10 +1,6 @@
 import 'package:facebook_2/view/EditProfile/widgets/image_widget.dart';
 import 'package:facebook_2/view/EditProfile/widgets/text_fields.dart';
-import 'package:facebook_2/utils/style/style.dart';
-
 import 'package:flutter/material.dart';
-
-import '../../../utils/style/style.dart';
 
 class ProfileEditables extends StatefulWidget {
   @override

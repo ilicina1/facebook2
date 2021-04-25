@@ -1,7 +1,7 @@
 import 'package:facebook_2/utils/dummyData/dummyData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:facebook_2/providers/CommentNotifier.dart';
+import 'package:facebook_2/providers/comment_notifier.dart';
 import 'package:provider/provider.dart';
 
 User userTrenutni = FirebaseAuth.instance.currentUser;

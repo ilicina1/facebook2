@@ -1,4 +1,4 @@
-import 'package:facebook_2/providers/CommentNotifier.dart';
+import 'package:facebook_2/providers/comment_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_2/utils/style/style.dart';
 import 'package:provider/provider.dart';

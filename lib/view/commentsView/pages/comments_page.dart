@@ -3,8 +3,6 @@ import 'package:facebook_2/view/commentsView/widgets/list_view_comments.dart';
 import 'package:facebook_2/view/commentsView/widgets/text_field_comments.dart';
 import 'package:facebook_2/view/mainPage/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
-import '../widgets/list_view_comments.dart';
-import '../widgets/list_view_comments.dart';
 
 class CommentsPage extends StatefulWidget {
   var document;

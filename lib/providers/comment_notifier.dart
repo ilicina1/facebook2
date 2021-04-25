@@ -6,10 +6,6 @@ class CommentNotifier extends ChangeNotifier {
   List<dynamic> _comments = [];
   List<dynamic> get comments => _comments;
 
-  // int velicina() {
-  //   return _comments.length;
-  // }
-
   Future<String> getComment(document, index) async {
     List<dynamic> listComments = [];
 
