@@ -2,17 +2,11 @@ import 'package:facebook_2/services/login_screen_services/login_facebook.dart';
 import 'package:facebook_2/utils/style/style.dart';
 import 'package:flutter/material.dart';
 
-// void pom() {
-//   print("${FirebaseFirestore.instance.collection("posts").doc().} docid");
-// }
-
 class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        // login(context);
-        // pom();
         handleLogin(context);
       },
       child: Row(

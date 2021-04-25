@@ -29,7 +29,6 @@ class _CommentButtonState extends State<CommentButton> {
       style: postButtonSyle(),
       onPressed: () {
         notif.addComment(myControllerComments, widget.document);
-        // addCommentModel(widget.document);
       },
     );
   }
