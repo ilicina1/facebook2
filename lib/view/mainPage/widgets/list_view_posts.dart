@@ -2,10 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facebook_2/services/main_screen_services/add_post.dart';
 import 'package:facebook_2/view/mainPage/widgets/card_items.dart';
 import 'package:facebook_2/view/mainPage/widgets/card_likes_dislakes_comment.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class ListViewPosts extends StatefulWidget {
   @override
@@ -13,6 +10,11 @@ class ListViewPosts extends StatefulWidget {
 }
 
 class _ListViewPostsState extends State<ListViewPosts> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,11 +24,13 @@ class _ListViewPostsState extends State<ListViewPosts> {
         child: StreamBuilder(
           stream: FirebaseFirestore.instance.collection("posts").snapshots(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
             return ListView.builder(
               itemCount: snapshot.data.docs.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  //height: MediaQuery.of(context).size.height * 0.13,
                   child: Column(
                     children: [
                       Card(
