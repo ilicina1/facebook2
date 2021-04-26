@@ -1,5 +1,4 @@
 import 'package:facebook_2/providers/comment_notifier.dart';
-import 'package:facebook_2/providers/likes_notifier.dart';
 import 'package:facebook_2/providers/post_image_notifier.dart';
 import 'package:facebook_2/providers/post_notifier.dart';
 import 'package:facebook_2/providers/profile_image_notifier.dart';
